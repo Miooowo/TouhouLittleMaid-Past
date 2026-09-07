@@ -1,0 +1,21 @@
+{
+	"modListVersion": 2,
+	"modList": [{
+		"modid": "${modId}",
+		"name": "${modName}",
+		"description": "Forge 1.7.10 port of Touhou Little Maid. Feature-parity target is the 1.20.1 Forge edition.",
+		"version": "${modVersion}",
+		"mcversion": "${minecraftVersion}",
+		"url": "https://github.com/Miooowo/TouhouLittleMaid-Past",
+		"updateUrl": "",
+		"authorList": ["TartaricAcid", "Miooowo"],
+		"credits": "TartaricAcid and contributors of Touhou Little Maid; MMM / Verclene (Little Maid Mob); ZUN (Touhou Project)",
+		"logoFile": "logo.png",
+		"screenshots": [],
+		"parent": "",
+		"requiredMods": [],
+		"dependencies": [],
+		"dependants": [],
+		"useDependencyInformation": false
+	}]
+}

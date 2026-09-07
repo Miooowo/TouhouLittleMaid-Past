@@ -1,0 +1,25 @@
+TouhouLittleMaid: Past
+======================
+
+This repository is an independent Forge 1.7.10 port. It is not the official
+Touhou Little Maid project.
+
+Upstream
+--------
+- Project: Touhou Little Maid
+- Author: tartaric_acid / TartaricAcid and contributors
+- Source of truth for 1.20.1 features: https://github.com/TartaricAcid/TouhouLittleMaid (branch 1.20)
+- Local reference clone (not committed): C:\Users\OEM\Projects\_ref\TouhouLittleMaid
+- Fork kept for attribution / history: https://github.com/Miooowo/TouhouLittleMaid
+
+Build template
+--------------
+- GTNewHorizons ExampleMod1.7.10 (RetroFuturaGradle)
+  https://github.com/GTNewHorizons/ExampleMod1.7.10
+
+Credits inherited from upstream readme
+--------------------------------------
+- MMM and Verclene: Little Maid Mob
+- ZUN: Touhou Project
+- Sound resource from あみたろの声素材工房
+- Other credits listed in the upstream readme.md

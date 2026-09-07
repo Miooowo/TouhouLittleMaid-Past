@@ -1,0 +1,3 @@
+// Pin a usable version before the first git tag exists.
+version = "0.1.0-1.7.10"
+group = "com.github.tartaricacid"

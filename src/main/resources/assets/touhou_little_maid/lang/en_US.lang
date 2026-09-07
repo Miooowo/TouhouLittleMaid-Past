@@ -1,0 +1,30 @@
+itemGroup.touhou_little_maid=TouhouLittleMaid: Past
+
+item.hakurei_gohei.name=Hakurei Gohei
+item.sanae_gohei.name=Sanae Gohei
+item.maid_spawn_egg.name=Maid Spawn Egg
+item.smart_slab_init.name=Smart Slab (Init)
+item.smart_slab_empty.name=Smart Slab (Empty)
+item.smart_slab_has_maid.name=Smart Slab (Occupied)
+item.maid_backpack_small.name=Small Maid Backpack
+item.maid_backpack_middle.name=Middle Maid Backpack
+item.maid_backpack_big.name=Big Maid Backpack
+item.chair.name=Chair
+item.power_point.name=P Point
+item.camera.name=Camera
+item.photo.name=Photo
+item.maid_bed.name=Maid Bed
+item.substitute_jizo.name=Substitute Jizo
+item.trumpet.name=Trumpet
+
+tile.altar.name=Altar
+
+entity.touhou_little_maid.maid.name=Maid
+
+tooltip.touhou_little_maid.placeholder=Placeholder — behaviour comes in a later port phase.
+
+message.touhou_little_maid.spawn=A maid has been summoned.
+message.touhou_little_maid.sit=Maid is now sitting.
+message.touhou_little_maid.stand=Maid is now standing.
+message.touhou_little_maid.task.set=Maid task: %s
+message.touhou_little_maid.altar.hint=Use a Gohei on a block (or this altar) to summon a maid. The 1.20.1 multi-block ritual is not ported yet.

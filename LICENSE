@@ -1,0 +1,15 @@
+TouhouLittleMaid: Past is a Forge 1.7.10 port of Touhou Little Maid.
+
+Upstream: https://github.com/TartaricAcid/TouhouLittleMaid
+This port: https://github.com/Miooowo/TouhouLittleMaid-Past
+
+Licenses follow the upstream project:
+
+- Code: MIT (see LICENSE-MIT)
+  Copyright (c) 2019-2025 tartaric_acid, for the code part
+  Portions of the 1.7.10 rewrite Copyright (c) 2026 Miooowo
+- Assets (textures, models, sounds, and other art): CC BY-NC-SA 4.0 (see LICENSE-CC)
+  Copyright (c) 2019-2025 tartaric_acid, for the assets part
+  Placeholder textures in this repository are original to the port and also released under CC BY-NC-SA 4.0
+
+The GTNH ExampleMod1.7.10 starter (Gradle scripts) is used under its own license; see NOTICE.

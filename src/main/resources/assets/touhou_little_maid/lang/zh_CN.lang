@@ -1,0 +1,30 @@
+itemGroup.touhou_little_maid=车万女仆：往昔
+
+item.hakurei_gohei.name=博丽御币
+item.sanae_gohei.name=东风御币
+item.maid_spawn_egg.name=女仆刷怪蛋
+item.smart_slab_init.name=智能硬盘（初始）
+item.smart_slab_empty.name=智能硬盘（空）
+item.smart_slab_has_maid.name=智能硬盘（已存储）
+item.maid_backpack_small.name=女仆小背包
+item.maid_backpack_middle.name=女仆中背包
+item.maid_backpack_big.name=女仆大背包
+item.chair.name=座椅
+item.power_point.name=P 点
+item.camera.name=相机
+item.photo.name=照片
+item.maid_bed.name=女仆床
+item.substitute_jizo.name=替身地藏
+item.trumpet.name=喇叭
+
+tile.altar.name=祭坛
+
+entity.touhou_little_maid.maid.name=女仆
+
+tooltip.touhou_little_maid.placeholder=占位物品——完整功能将在后续移植阶段补齐。
+
+message.touhou_little_maid.spawn=一名女仆已被召唤。
+message.touhou_little_maid.sit=女仆进入待机（坐下）。
+message.touhou_little_maid.stand=女仆站起。
+message.touhou_little_maid.task.set=女仆任务：%s
+message.touhou_little_maid.altar.hint=用御币对地面或祭坛使用即可召唤女仆。1.20.1 的多方块祭坛仪式尚未移植。
