@@ -69,6 +69,11 @@ public class GuiMaid extends GuiContainer {
                 (int) Math.ceil(maid.getHealth()),
                 (int) Math.ceil(maid.getMaxHealth()));
         fontRendererObj.drawString(hp, 110, 6, 0x404040);
+        fontRendererObj.drawString(
+                I18n.format("gui.touhou_little_maid.task", I18n.format(maid.getTask().translationKey())),
+                44,
+                18,
+                0x404040);
         fontRendererObj.drawString(I18n.format("container.inventory"), 8, ySize - 96 + 2, 0x404040);
     }
 

@@ -28,6 +28,28 @@ gui.touhou_little_maid.cycle_task=Task
 gui.touhou_little_maid.task=Task: %s
 gui.touhou_little_maid.health=HP %s/%s
 
+task.touhou_little_maid.idle=Idle
+task.touhou_little_maid.attack=Attack
+task.touhou_little_maid.ranged_attack=Ranged Attack
+task.touhou_little_maid.crossbow_attack=Crossbow
+task.touhou_little_maid.danmaku_attack=Danmaku
+task.touhou_little_maid.trident_attack=Trident
+task.touhou_little_maid.farm=Farm
+task.touhou_little_maid.sugar_cane=Sugar Cane
+task.touhou_little_maid.melon=Melon
+task.touhou_little_maid.cocoa=Cocoa
+task.touhou_little_maid.honey=Honey
+task.touhou_little_maid.grass=Grass
+task.touhou_little_maid.snow=Snow
+task.touhou_little_maid.feed=Feed Owner
+task.touhou_little_maid.shears=Shears
+task.touhou_little_maid.milk=Milk
+task.touhou_little_maid.torch=Torch
+task.touhou_little_maid.feed_animal=Feed Animals
+task.touhou_little_maid.fishing=Fishing
+task.touhou_little_maid.extinguishing=Extinguish
+task.touhou_little_maid.board_games=Board Games
+
 tooltip.touhou_little_maid.smart_slab.desc=Empty slab stores a maid; occupied slab places her.
 tooltip.touhou_little_maid.smart_slab.name=Maid: %s
 

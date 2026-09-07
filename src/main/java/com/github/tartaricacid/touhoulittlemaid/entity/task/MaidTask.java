@@ -4,7 +4,6 @@ import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 
 /**
  * Task ids match Touhou Little Maid 1.20.1 ({@code touhou_little_maid:<id>}).
- * Only {@link #IDLE} and {@link #ATTACK} have 1.7.10 AI this phase.
  */
 public enum MaidTask {
     IDLE("idle", true),
@@ -13,18 +12,18 @@ public enum MaidTask {
     CROSSBOW_ATTACK("crossbow_attack", false),
     DANMAKU_ATTACK("danmaku_attack", false),
     TRIDENT_ATTACK("trident_attack", false),
-    FARM("farm", false),
+    FARM("farm", true),
     SUGAR_CANE("sugar_cane", false),
     MELON("melon", false),
     COCOA("cocoa", false),
     HONEY("honey", false),
-    GRASS("grass", false),
+    GRASS("grass", true),
     SNOW("snow", false),
     FEED("feed", false),
-    SHEARS("shears", false),
-    MILK("milk", false),
-    TORCH("torch", false),
-    FEED_ANIMAL("feed_animal", false),
+    SHEARS("shears", true),
+    MILK("milk", true),
+    TORCH("torch", true),
+    FEED_ANIMAL("feed_animal", true),
     FISHING("fishing", false),
     EXTINGUISHING("extinguishing", false),
     BOARD_GAMES("board_games", false);
@@ -39,6 +38,20 @@ public enum MaidTask {
 
     public String namespacedId() {
         return TouhouLittleMaid.MOD_ID + ":" + id;
+    }
+
+    public String translationKey() {
+        return "task.touhou_little_maid." + id;
+    }
+
+    /** World-work tasks pause owner-follow so EntityAI can path to crops/mobs. */
+    public boolean isWorldWork() {
+        return this == FARM
+                || this == SHEARS
+                || this == TORCH
+                || this == MILK
+                || this == FEED_ANIMAL
+                || this == GRASS;
     }
 
     public MaidTask nextImplemented() {

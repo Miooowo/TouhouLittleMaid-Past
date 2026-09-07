@@ -2,8 +2,15 @@ package com.github.tartaricacid.touhoulittlemaid.entity.passive;
 
 import com.github.tartaricacid.touhoulittlemaid.Config;
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFarm;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFeedAnimal;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFollowOwner;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidGrass;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidMilk;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidOwnerHurtByTarget;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidOwnerHurtTarget;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidShears;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidTorch;
 import com.github.tartaricacid.touhoulittlemaid.entity.task.MaidTask;
 import com.github.tartaricacid.touhoulittlemaid.init.InitBlocks;
 import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
@@ -17,7 +24,6 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIFollowOwner;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -52,13 +58,19 @@ public class EntityMaid extends EntityTameable {
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.2D, true));
+        this.tasks.addTask(4, new EntityAIMaidFarm(this));
+        this.tasks.addTask(4, new EntityAIMaidShears(this));
+        this.tasks.addTask(4, new EntityAIMaidTorch(this));
+        this.tasks.addTask(4, new EntityAIMaidMilk(this));
+        this.tasks.addTask(4, new EntityAIMaidFeedAnimal(this));
+        this.tasks.addTask(4, new EntityAIMaidGrass(this));
         this.tasks.addTask(
-                4,
-                new EntityAIFollowOwner(
+                5,
+                new EntityAIMaidFollowOwner(
                         this, 1.0D, Config.maidFollowStartDistance, Config.maidFollowStopDistance));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(7, new EntityAILookIdle(this));
+        this.tasks.addTask(6, new EntityAIWander(this, 0.8D));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIMaidOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIMaidOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
@@ -104,7 +116,9 @@ public class EntityMaid extends EntityTameable {
         setTask(next);
         if (player != null && !worldObj.isRemote) {
             player.addChatMessage(
-                    new ChatComponentTranslation("message.touhou_little_maid.task.set", next.namespacedId()));
+                    new ChatComponentTranslation(
+                            "message.touhou_little_maid.task.set",
+                            new ChatComponentTranslation(next.translationKey())));
         }
     }
 
