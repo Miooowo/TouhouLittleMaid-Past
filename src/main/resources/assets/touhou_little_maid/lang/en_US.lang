@@ -18,8 +18,18 @@ item.substitute_jizo.name=Substitute Jizo
 item.trumpet.name=Trumpet
 
 tile.altar.name=Altar
+tile.tombstone.name=Tombstone
 
 entity.touhou_little_maid.maid.name=Maid
+
+gui.touhou_little_maid.sit=Sit
+gui.touhou_little_maid.stand=Stand
+gui.touhou_little_maid.cycle_task=Task
+gui.touhou_little_maid.task=Task: %s
+gui.touhou_little_maid.health=HP %s/%s
+
+tooltip.touhou_little_maid.smart_slab.desc=Empty slab stores a maid; occupied slab places her.
+tooltip.touhou_little_maid.smart_slab.name=Maid: %s
 
 tooltip.touhou_little_maid.placeholder=Placeholder — behaviour comes in a later port phase.
 
@@ -28,3 +38,10 @@ message.touhou_little_maid.sit=Maid is now sitting.
 message.touhou_little_maid.stand=Maid is now standing.
 message.touhou_little_maid.task.set=Maid task: %s
 message.touhou_little_maid.altar.hint=Use a Gohei on a block (or this altar) to summon a maid. The 1.20.1 multi-block ritual is not ported yet.
+message.touhou_little_maid.slab.store=The maid was stored in the Smart Slab.
+message.touhou_little_maid.slab.release=The maid was released from the Smart Slab.
+message.touhou_little_maid.slab.not_yours=This is not your maid.
+message.touhou_little_maid.tombstone.not_yours=This tombstone is not yours.
+message.touhou_little_maid.tombstone.inventory_full=Inventory full. Sneak-click to drop leftover items.
+message.touhou_little_maid.tombstone.use_gohei=Items recovered. Use a Gohei on the tombstone to revive the maid.
+message.touhou_little_maid.tombstone.revive=The maid was revived.

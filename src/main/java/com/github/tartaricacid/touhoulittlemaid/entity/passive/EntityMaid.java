@@ -5,7 +5,12 @@ import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidOwnerHurtByTarget;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidOwnerHurtTarget;
 import com.github.tartaricacid.touhoulittlemaid.entity.task.MaidTask;
+import com.github.tartaricacid.touhoulittlemaid.init.InitBlocks;
+import com.github.tartaricacid.touhoulittlemaid.init.InitItems;
+import com.github.tartaricacid.touhoulittlemaid.inventory.MaidGuiHandler;
 import com.github.tartaricacid.touhoulittlemaid.item.ItemHakureiGohei;
+import com.github.tartaricacid.touhoulittlemaid.item.ItemSmartSlab;
+import com.github.tartaricacid.touhoulittlemaid.tileentity.TileEntityTombstone;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -24,8 +29,10 @@ import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityMaid extends EntityTameable {
@@ -101,6 +108,28 @@ public class EntityMaid extends EntityTameable {
         }
     }
 
+    public void toggleSitting(EntityPlayer player) {
+        setSitting(!isSitting());
+        isJumping = false;
+        setPathToEntity(null);
+        setTarget(null);
+        setAttackTarget(null);
+        if (player != null && !worldObj.isRemote) {
+            player.addChatMessage(
+                    new ChatComponentTranslation(
+                            isSitting()
+                                    ? "message.touhou_little_maid.sit"
+                                    : "message.touhou_little_maid.stand"));
+        }
+    }
+
+    public void openGui(EntityPlayer player) {
+        if (!worldObj.isRemote) {
+            player.openGui(
+                    TouhouLittleMaid.instance, MaidGuiHandler.MAID, worldObj, getEntityId(), 0, 0);
+        }
+    }
+
     public boolean canProtectOwner() {
         return isTamed() && !isSitting() && (Config.ownerAlwaysProtected || getTask() == MaidTask.ATTACK);
     }
@@ -136,27 +165,63 @@ public class EntityMaid extends EntityTameable {
             return true;
         }
         if (func_152114_e(player)) {
+            if (held != null && held.getItem() == InitItems.SMART_SLAB_EMPTY) {
+                if (!worldObj.isRemote) {
+                    ItemSmartSlab.storeMaid(held, player, this);
+                }
+                return true;
+            }
             if (held != null && ItemHakureiGohei.isGohei(held)) {
                 if (!worldObj.isRemote) {
                     cycleTask(player);
                 }
                 return true;
             }
-            if (!worldObj.isRemote) {
-                setSitting(!isSitting());
-                isJumping = false;
-                setPathToEntity(null);
-                setTarget(null);
-                setAttackTarget(null);
-                player.addChatMessage(
-                        new ChatComponentTranslation(
-                                isSitting()
-                                        ? "message.touhou_little_maid.sit"
-                                        : "message.touhou_little_maid.stand"));
+            if (player.isSneaking()) {
+                if (!worldObj.isRemote) {
+                    toggleSitting(player);
+                }
+                return true;
             }
+            openGui(player);
             return true;
         }
         return super.interact(player);
+    }
+
+    @Override
+    public void onDeath(DamageSource source) {
+        if (!worldObj.isRemote) {
+            placeTombstone();
+        }
+        super.onDeath(source);
+    }
+
+    @Override
+    protected void dropFewItems(boolean recentlyHit, int looting) {}
+
+    @Override
+    protected void dropEquipment(boolean recentlyHit, int looting) {}
+
+    private void placeTombstone() {
+        int x = MathHelper.floor_double(posX);
+        int y = MathHelper.floor_double(posY);
+        int z = MathHelper.floor_double(posZ);
+        while (y > 1 && worldObj.isAirBlock(x, y, z)) {
+            y--;
+        }
+        y++;
+        if (!worldObj.isAirBlock(x, y, z) && !worldObj.getBlock(x, y, z).getMaterial().isReplaceable()) {
+            y++;
+        }
+        if (y >= worldObj.getHeight() - 1) {
+            return;
+        }
+        worldObj.setBlock(x, y, z, InitBlocks.TOMBSTONE, 0, 3);
+        TileEntity tile = worldObj.getTileEntity(x, y, z);
+        if (tile instanceof TileEntityTombstone) {
+            ((TileEntityTombstone) tile).captureMaid(this);
+        }
     }
 
     @Override

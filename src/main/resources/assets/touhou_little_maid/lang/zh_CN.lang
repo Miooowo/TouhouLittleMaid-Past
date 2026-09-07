@@ -18,8 +18,18 @@ item.substitute_jizo.name=替身地藏
 item.trumpet.name=喇叭
 
 tile.altar.name=祭坛
+tile.tombstone.name=墓碑
 
 entity.touhou_little_maid.maid.name=女仆
+
+gui.touhou_little_maid.sit=坐下
+gui.touhou_little_maid.stand=站起
+gui.touhou_little_maid.cycle_task=任务
+gui.touhou_little_maid.task=任务：%s
+gui.touhou_little_maid.health=生命 %s/%s
+
+tooltip.touhou_little_maid.smart_slab.desc=空手盘收纳女仆；有女仆的硬盘可将其放出。
+tooltip.touhou_little_maid.smart_slab.name=女仆：%s
 
 tooltip.touhou_little_maid.placeholder=占位物品——完整功能将在后续移植阶段补齐。
 
@@ -28,3 +38,10 @@ message.touhou_little_maid.sit=女仆进入待机（坐下）。
 message.touhou_little_maid.stand=女仆站起。
 message.touhou_little_maid.task.set=女仆任务：%s
 message.touhou_little_maid.altar.hint=用御币对地面或祭坛使用即可召唤女仆。1.20.1 的多方块祭坛仪式尚未移植。
+message.touhou_little_maid.slab.store=女仆已收纳进智能硬盘。
+message.touhou_little_maid.slab.release=女仆已从智能硬盘放出。
+message.touhou_little_maid.slab.not_yours=这不是你的女仆。
+message.touhou_little_maid.tombstone.not_yours=这不是你的墓碑。
+message.touhou_little_maid.tombstone.inventory_full=背包已满。潜行右键可扔出剩余物品。
+message.touhou_little_maid.tombstone.use_gohei=物品已取回。用御币对墓碑使用可复活女仆。
+message.touhou_little_maid.tombstone.revive=女仆已复活。
