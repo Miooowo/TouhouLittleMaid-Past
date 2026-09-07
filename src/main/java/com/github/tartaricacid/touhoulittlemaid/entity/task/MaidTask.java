@@ -13,19 +13,19 @@ public enum MaidTask {
     DANMAKU_ATTACK("danmaku_attack", false),
     TRIDENT_ATTACK("trident_attack", false),
     FARM("farm", true),
-    SUGAR_CANE("sugar_cane", false),
-    MELON("melon", false),
-    COCOA("cocoa", false),
+    SUGAR_CANE("sugar_cane", true),
+    MELON("melon", true),
+    COCOA("cocoa", true),
     HONEY("honey", false),
     GRASS("grass", true),
-    SNOW("snow", false),
-    FEED("feed", false),
+    SNOW("snow", true),
+    FEED("feed", true),
     SHEARS("shears", true),
     MILK("milk", true),
     TORCH("torch", true),
     FEED_ANIMAL("feed_animal", true),
-    FISHING("fishing", false),
-    EXTINGUISHING("extinguishing", false),
+    FISHING("fishing", true),
+    EXTINGUISHING("extinguishing", true),
     BOARD_GAMES("board_games", false);
 
     public final String id;
@@ -47,11 +47,18 @@ public enum MaidTask {
     /** World-work tasks pause owner-follow so EntityAI can path to crops/mobs. */
     public boolean isWorldWork() {
         return this == FARM
+                || this == SUGAR_CANE
+                || this == MELON
+                || this == COCOA
+                || this == GRASS
+                || this == SNOW
+                || this == FEED
                 || this == SHEARS
-                || this == TORCH
                 || this == MILK
+                || this == TORCH
                 || this == FEED_ANIMAL
-                || this == GRASS;
+                || this == FISHING
+                || this == EXTINGUISHING;
     }
 
     public MaidTask nextImplemented() {

@@ -2,14 +2,21 @@ package com.github.tartaricacid.touhoulittlemaid.entity.passive;
 
 import com.github.tartaricacid.touhoulittlemaid.Config;
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidCocoa;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidExtinguish;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFarm;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFeed;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFeedAnimal;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFishing;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidFollowOwner;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidGrass;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidMelon;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidMilk;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidOwnerHurtByTarget;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidOwnerHurtTarget;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidShears;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidSnow;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidSugarCane;
 import com.github.tartaricacid.touhoulittlemaid.entity.ai.EntityAIMaidTorch;
 import com.github.tartaricacid.touhoulittlemaid.entity.task.MaidTask;
 import com.github.tartaricacid.touhoulittlemaid.init.InitBlocks;
@@ -59,11 +66,18 @@ public class EntityMaid extends EntityTameable {
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.2D, true));
         this.tasks.addTask(4, new EntityAIMaidFarm(this));
+        this.tasks.addTask(4, new EntityAIMaidSugarCane(this));
+        this.tasks.addTask(4, new EntityAIMaidMelon(this));
+        this.tasks.addTask(4, new EntityAIMaidCocoa(this));
         this.tasks.addTask(4, new EntityAIMaidShears(this));
         this.tasks.addTask(4, new EntityAIMaidTorch(this));
         this.tasks.addTask(4, new EntityAIMaidMilk(this));
         this.tasks.addTask(4, new EntityAIMaidFeedAnimal(this));
+        this.tasks.addTask(4, new EntityAIMaidFeed(this));
         this.tasks.addTask(4, new EntityAIMaidGrass(this));
+        this.tasks.addTask(4, new EntityAIMaidSnow(this));
+        this.tasks.addTask(4, new EntityAIMaidFishing(this));
+        this.tasks.addTask(4, new EntityAIMaidExtinguish(this));
         this.tasks.addTask(
                 5,
                 new EntityAIMaidFollowOwner(

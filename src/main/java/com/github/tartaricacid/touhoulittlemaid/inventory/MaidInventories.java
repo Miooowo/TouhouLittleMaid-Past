@@ -9,7 +9,9 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFishingRod;
 import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemShears;
 
@@ -18,9 +20,14 @@ public final class MaidInventories {
     private MaidInventories() {}
 
     public static int findItem(EntityMaid maid, Item item) {
+        return findItem(maid, item, -1);
+    }
+
+    public static int findItem(EntityMaid maid, Item item, int damage) {
         for (int i = 0; i < maid.getInventory().getSizeInventory(); i++) {
             ItemStack stack = maid.getInventory().getStackInSlot(i);
-            if (stack != null && stack.getItem() == item && stack.stackSize > 0) {
+            if (stack != null && stack.getItem() == item && stack.stackSize > 0
+                    && (damage < 0 || stack.getItemDamage() == damage)) {
                 return i;
             }
         }
@@ -38,13 +45,37 @@ public final class MaidInventories {
     }
 
     public static int findShears(EntityMaid maid) {
+        return findTool(maid, ItemShears.class);
+    }
+
+    public static int findShovel(EntityMaid maid) {
+        return findTool(maid, ItemSpade.class);
+    }
+
+    public static int findFishingRod(EntityMaid maid) {
+        return findTool(maid, ItemFishingRod.class);
+    }
+
+    private static int findTool(EntityMaid maid, Class<?> type) {
         for (int i = 0; i < maid.getInventory().getSizeInventory(); i++) {
             ItemStack stack = maid.getInventory().getStackInSlot(i);
-            if (stack != null && stack.getItem() instanceof ItemShears) {
+            if (stack != null && type.isInstance(stack.getItem())) {
                 return i;
             }
         }
         return -1;
+    }
+
+    public static boolean damageSlot(EntityMaid maid, int slot, int amount) {
+        ItemStack stack = maid.getInventory().getStackInSlot(slot);
+        if (stack == null) {
+            return false;
+        }
+        stack.damageItem(amount, maid);
+        if (stack.stackSize <= 0) {
+            maid.getInventory().setInventorySlotContents(slot, null);
+        }
+        return true;
     }
 
     public static Item torchItem() {
